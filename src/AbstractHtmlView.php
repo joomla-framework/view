@@ -27,27 +27,38 @@ abstract class AbstractHtmlView extends AbstractView
 	protected $layout = 'default';
 
 	/**
+	 * The view template engine.
+	 *
+	 * @var    RendererInterface
+	 * @since  __DEPLOY_VERSION__
+	 */
+	protected $renderer = null;
+
+	/**
 	 * The paths queue.
 	 *
 	 * @var    \SplPriorityQueue
 	 * @since  1.0
+	 * @deprecated  3.0  Use the path methods of RendererInterface instead
 	 */
 	protected $paths;
 
 	/**
 	 * Method to instantiate the view.
 	 *
-	 * @param   ModelInterface     $model  The model object.
-	 * @param   \SplPriorityQueue  $paths  The paths queue.
+	 * @param   ModelInterface     $model     The model object.
+	 * @param   RendererInterface  $renderer  The renderer object.
+	 * @param   \SplPriorityQueue  $paths     The paths queue. [@deprecated 3.0]
 	 *
 	 * @since   1.0
 	 */
-	public function __construct(ModelInterface $model, \SplPriorityQueue $paths = null)
+	public function __construct(ModelInterface $model, RendererInterface $renderer, \SplPriorityQueue $paths = null)
 	{
 		parent::__construct($model);
 
 		// Setup dependencies.
-		$this->paths = isset($paths) ? $paths : $this->loadPaths();
+		$this->paths    = isset($paths) ? $paths : $this->loadPaths();
+		$this->renderer = $renderer;
 	}
 
 	/**
@@ -106,6 +117,7 @@ abstract class AbstractHtmlView extends AbstractView
 	 * @return  mixed  The layout file name if found, false otherwise.
 	 *
 	 * @since   1.0
+	 * @deprecated  3.0  Use the path methods of RendererInterface instead
 	 */
 	public function getPath($layout, $ext = 'php')
 	{
@@ -124,10 +136,23 @@ abstract class AbstractHtmlView extends AbstractView
 	 * @return  \SplPriorityQueue  The paths queue.
 	 *
 	 * @since   1.0
+	 * @deprecated  3.0  Use the path methods of RendererInterface instead
 	 */
 	public function getPaths()
 	{
 		return $this->paths;
+	}
+
+	/**
+	 * Method to get the renderer object.
+	 *
+	 * @return  RendererInterface  The renderer object.
+	 *
+	 * @since   __DEPLOY_VERSION__
+	 */
+	public function getRenderer()
+	{
+		return $this->renderer;
 	}
 
 	/**
@@ -140,25 +165,7 @@ abstract class AbstractHtmlView extends AbstractView
 	 */
 	public function render()
 	{
-		// Get the layout path.
-		$path = $this->getPath($this->getLayout());
-
-		// Check if the layout path was found.
-		if (!$path)
-		{
-			throw new \RuntimeException('Layout Path Not Found');
-		}
-
-		// Start an output buffer.
-		ob_start();
-
-		// Load the layout.
-		include $path;
-
-		// Get the layout contents.
-		$output = ob_get_clean();
-
-		return $output;
+		return $this->renderer->render($this->layout);
 	}
 
 	/**
@@ -185,6 +192,7 @@ abstract class AbstractHtmlView extends AbstractView
 	 * @return  AbstractHtmlView  Method supports chaining.
 	 *
 	 * @since   1.0
+	 * @deprecated  3.0  Use the path methods of RendererInterface instead
 	 */
 	public function setPaths(\SplPriorityQueue $paths)
 	{
@@ -199,6 +207,7 @@ abstract class AbstractHtmlView extends AbstractView
 	 * @return  \SplPriorityQueue  The paths queue.
 	 *
 	 * @since   1.0
+	 * @deprecated  3.0  Use the path methods of RendererInterface instead
 	 */
 	protected function loadPaths()
 	{
