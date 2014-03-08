@@ -16,6 +16,26 @@ namespace Joomla\View;
 interface RendererInterface
 {
 	/**
+	 * Set the templates location paths.
+	 *
+	 * @param   string  $path  Templates location path.
+	 *
+	 * @return  RendererInterface
+	 *
+	 * @since   __DEPLOY_VERSION__
+	 */
+	public function addPath($path);
+
+	/**
+	 * Returns the name of the current rendering engine
+	 *
+	 * @return  string  Rendering engine name
+	 *
+	 * @since   __DEPLOY_VERSION__
+	 */
+	public function getEngine();
+
+	/**
 	 * Render and return compiled HTML.
 	 *
 	 * @param   string  $template  The template file name
@@ -49,38 +69,4 @@ interface RendererInterface
 	 * @since   __DEPLOY_VERSION__
 	 */
 	public function setTemplatesPaths($paths, $overrideBaseDir = false);
-
-	/**
-	 * Set the templates location paths.
-	 *
-	 * @param   string  $path  Templates location path.
-	 *
-	 * @return  RendererInterface
-	 *
-	 * @since   __DEPLOY_VERSION__
-	 */
-	public function addPath($path);
-
-	/**
-	 * Set the data.
-	 *
-	 * @param   mixed  $key    The variable name or an array of variable names with values.
-	 * @param   mixed  $value  The value.
-	 *
-	 * @return  RendererInterface
-	 *
-	 * @since   __DEPLOY_VERSION__
-	 */
-	public function set($key, $value);
-
-	/**
-	 * Unset a particular variable.
-	 *
-	 * @param   mixed  $key  The variable name
-	 *
-	 * @return  RendererInterface
-	 *
-	 * @since   __DEPLOY_VERSION__
-	 */
-	public function unsetData($key);
 }

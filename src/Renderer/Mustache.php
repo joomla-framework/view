@@ -98,25 +98,6 @@ class Mustache extends \Mustache_Engine implements RendererInterface
 	}
 
 	/**
-	 * Unset a particular variable.
-	 *
-	 * @param   mixed  $key  The variable name.
-	 *
-	 * @return  $this  Method supports chaining
-	 *
-	 * @since   __DEPLOY_VERSION__
-	 */
-	public function unsetData($key)
-	{
-		if (array_key_exists($key, $this->data))
-		{
-			unset($this->data[$key]);
-		}
-
-		return $this;
-	}
-
-	/**
 	 * Set the template.
 	 *
 	 * @param   string  $name  The name of the template file.
@@ -158,6 +139,18 @@ class Mustache extends \Mustache_Engine implements RendererInterface
 	}
 
 	/**
+	 * Returns the name of the current rendering engine
+	 *
+	 * @return  string  Rendering engine name
+	 *
+	 * @since   __DEPLOY_VERSION__
+	 */
+	public function getEngine()
+	{
+		return 'mustache';
+	}
+
+	/**
 	 * Get the current template name.
 	 *
 	 * @return  string  The name of the currently loaded template file (without the extension).
@@ -196,21 +189,6 @@ class Mustache extends \Mustache_Engine implements RendererInterface
 	}
 
 	/**
-	 * Add a filter.
-	 *
-	 * @param   string  $name    The filter name.
-	 * @param   object  $filter  The filter.
-	 *
-	 * @return  mixed
-	 *
-	 * @since   __DEPLOY_VERSION__
-	 * @todo    Implement addFilter() method.
-	 */
-	public function addFilter($name, $filter = null)
-	{
-	}
-
-	/**
 	 * Sets the paths where templates are stored.
 	 *
 	 * @param   string|array  $paths            A path or an array of paths where to look for templates.
@@ -222,20 +200,6 @@ class Mustache extends \Mustache_Engine implements RendererInterface
 	 * @todo    Implement setTemplatesPaths() method.
 	 */
 	public function setTemplatesPaths($paths, $overrideBaseDir = false)
-	{
-	}
-
-	/**
-	 * Add a function.
-	 *
-	 * @param   string  $function  The function name to add
-	 *
-	 * @return  mixed
-	 *
-	 * @since   __DEPLOY_VERSION__
-	 * @todo    Implement addFunction() method.
-	 */
-	public function addFunction($function)
 	{
 	}
 }

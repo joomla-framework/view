@@ -101,6 +101,18 @@ class Twig extends \Twig_Environment implements RendererInterface
 	}
 
 	/**
+	 * Returns the name of the current rendering engine
+	 *
+	 * @return  string  Rendering engine name
+	 *
+	 * @since   __DEPLOY_VERSION__
+	 */
+	public function getEngine()
+	{
+		return 'twig';
+	}
+
+	/**
 	 * Get the Lexer instance.
 	 *
 	 * @return  \Twig_LexerInterface  A Twig_LexerInterface instance.
@@ -156,20 +168,6 @@ class Twig extends \Twig_Environment implements RendererInterface
 		}
 
 		return $this;
-	}
-
-	/**
-	 * Unset a particular variable.
-	 *
-	 * @param   mixed  $key  The variable name.
-	 *
-	 * @return  Twig  Method supports chaining.
-	 *
-	 * @since   __DEPLOY_VERSION__
-	 */
-	public function unsetData($key)
-	{
-		return $this->unsetData($key);
 	}
 
 	/**

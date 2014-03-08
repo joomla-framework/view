@@ -48,16 +48,19 @@ class Php implements RendererInterface
 	 * @param   array  $config  The array of configuration parameters.
 	 *
 	 * @since   1.0
+	 * @throws  \InvalidArgumentException
 	 */
 	public function __construct(array $config = array())
 	{
-		$this->addPath((isset($config['templates_base_dir']) ? $config['templates_base_dir'] : JPATH_TEMPLATES));
+		if (!isset($config['templates_base_dir']))
+		{
+			throw new \InvalidArgumentException('The "templates_base_dir" value must be set in the configuration array.');
+		}
 
-		$this->debug   = JDEBUG;
+		$this->addPath($config['templates_base_dir']);
+
+		$this->debug   = (isset($config['debug']) ? (bool) $config['debug'] : false);
 		$this->globals = new Registry;
-		$app = $this->container->get('app');
-
-		$this->set('uri', $app->get('uri'));
 	}
 
 	/**
@@ -147,12 +150,24 @@ class Php implements RendererInterface
 
 		$msg .= 'Template file not found: ' . $fileName;
 
-		if (JDEBUG)
+		if ($this->debug)
 		{
 			$msg .= '<br />Registered paths:<br />' . implode('<br />', $this->templatePaths);
 		}
 
 		throw new \RuntimeException($msg);
+	}
+
+	/**
+	 * Returns the name of the current rendering engine
+	 *
+	 * @return  string  Rendering engine name
+	 *
+	 * @since   __DEPLOY_VERSION__
+	 */
+	public function getEngine()
+	{
+		return 'php';
 	}
 
 	/**
@@ -190,23 +205,6 @@ class Php implements RendererInterface
 	}
 
 	/**
-	 * Unset a particular variable.
-	 *
-	 * @param   mixed  $key  The variable name
-	 *
-	 * @return  $this  Method allows chaining
-	 *
-	 * @since   1.0
-	 */
-	public function unsetData($key)
-	{
-		// TODO: Implement unsetData() method.
-		echo __METHOD__ . print_r($key, 1);
-
-		return $this;
-	}
-
-	/**
 	 * Set the templates location paths.
 	 *
 	 * @param   string  $path  Templates location path.
@@ -222,23 +220,6 @@ class Php implements RendererInterface
 		return $this;
 	}
 
-	/**
-	 * Test.
-	 *
-	 * @param   string  $name    Test.
-	 * @param   object  $filter  Test.
-	 *
-	 * @return  $this  Method allows chaining
-	 *
-	 * @since   1.0
-	 */
-	public function addFilter($name, $filter = null)
-	{
-		// TODO: Implement addFilter() method.
-		// @echo __METHOD__ . print_r($name, 1);
-
-		return $this;
-	}
 
 	/**
 	 * Sets the paths where templates are stored.
@@ -262,41 +243,6 @@ class Php implements RendererInterface
 			}
 		}
 
-		return $this;
-	}
-
-	/**
-	 * Add a function.
-	 *
-	 * @param   object  $function  @todo not really sure yet..
-	 *
-	 * @return  $this  Method allows chaining
-	 *
-	 * @since   1.0
-	 */
-	public function addFunction($function)
-	{
-		// TODO: Implement addFunction() method.
-		echo __METHOD__ . print_r($function, 1);
-
-		return $this;
-	}
-
-	/**
-	 * Add an extension.
-	 *
-	 * NOT SUPPORTED !
-	 *
-	 * @param   object  $extension  The extension.
-	 *
-	 * @return  $this  Method allows chaining
-	 *
-	 * @since   1.0
-	 */
-	public function addExtension($extension)
-	{
-		// TODO: Implement addExtension() method.
-		// @echo __METHOD__ . '<br /><br />'; //. print_r($extension, 1);
 		return $this;
 	}
 }
