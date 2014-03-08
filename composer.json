@@ -11,12 +11,18 @@
         "joomla/model": "~1.0"
     },
     "require-dev": {
-        "joomla/test": "~1.0"
+        "joomla/test": "~1.0",
+        "mustache/mustache": "~2.0",
+        "twig/twig": "~1.0"
+    },
+    "suggest": {
+        "mustache/mustache": "Install Mustache to render Mustache based layouts.",
+        "twig/twig": "Install Twig to render Twig based layouts."
     },
     "autoload": {
-    	"psr-4": {
-    		"Joomla\\View\\": "src/",
+        "psr-4": {
+            "Joomla\\View\\": "src/",
             "Joomla\\View\\Tests\\": "Tests/"
-    	}
+        }
     }
 }
