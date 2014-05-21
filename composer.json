@@ -12,12 +12,7 @@
     },
     "require-dev": {
         "joomla/test": "~1.0",
-        "mustache/mustache": "~2.0",
-        "twig/twig": "~1.0"
-    },
-    "suggest": {
-        "mustache/mustache": "Install Mustache to render Mustache based layouts.",
-        "twig/twig": "Install Twig to render Twig based layouts."
+        "babdev/renderer": "dev-master"
     },
     "autoload": {
         "psr-4": {
