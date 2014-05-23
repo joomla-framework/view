@@ -40,7 +40,7 @@ abstract class AbstractHtmlView extends AbstractView
 	 *
 	 * @var    \SplPriorityQueue
 	 * @since  1.0
-	 * @deprecated  3.0  Set the paths in the RendererInterface object instead
+	 * @deprecated  2.0  In 2.0, a RendererInterface object will be required which will manage paths.
 	 */
 	protected $paths;
 
@@ -57,7 +57,7 @@ abstract class AbstractHtmlView extends AbstractView
 	 *
 	 * @param   ModelInterface     $model     The model object.
 	 * @param   RendererInterface  $renderer  The renderer object. [@note Will be typehinted and required at 3.0]
-	 * @param   \SplPriorityQueue  $paths     The paths queue. [@deprecated Will be removed at 3.0]
+	 * @param   \SplPriorityQueue  $paths     The paths queue. [@deprecated In 2.0, a RendererInterface object will be required which will manage paths.]
 	 *
 	 * @since   1.0
 	 */
@@ -154,7 +154,7 @@ abstract class AbstractHtmlView extends AbstractView
 	 * @return  mixed  The layout file name if found, false otherwise.
 	 *
 	 * @since   1.0
-	 * @deprecated  3.0  Set the paths in the RendererInterface object instead
+	 * @deprecated  2.0  In 2.0, a RendererInterface object will be required which will manage paths.
 	 */
 	public function getPath($layout, $ext = 'php')
 	{
@@ -173,7 +173,7 @@ abstract class AbstractHtmlView extends AbstractView
 	 * @return  \SplPriorityQueue  The paths queue.
 	 *
 	 * @since   1.0
-	 * @deprecated  3.0  Set the paths in the RendererInterface object instead
+	 * @deprecated  2.0  In 2.0, a RendererInterface object will be required which will manage paths.
 	 */
 	public function getPaths()
 	{
@@ -251,7 +251,7 @@ abstract class AbstractHtmlView extends AbstractView
 	 * @return  AbstractHtmlView  Method supports chaining.
 	 *
 	 * @since   1.0
-	 * @deprecated  3.0  Set the paths in the RendererInterface object instead
+	 * @deprecated  2.0  In 2.0, a RendererInterface object will be required which will manage paths.
 	 */
 	public function setPaths(\SplPriorityQueue $paths)
 	{
@@ -282,7 +282,7 @@ abstract class AbstractHtmlView extends AbstractView
 	 * @return  \SplPriorityQueue  The paths queue.
 	 *
 	 * @since   1.0
-	 * @deprecated  3.0  Set the paths in the RendererInterface object instead
+	 * @deprecated  2.0  In 2.0, a RendererInterface object will be required which will manage paths.
 	 */
 	protected function loadPaths()
 	{
