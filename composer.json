@@ -11,12 +11,13 @@
         "joomla/model": "~1.0"
     },
     "require-dev": {
-        "joomla/test": "~1.0"
+        "joomla/test": "~1.0",
+        "babdev/renderer": "dev-master"
     },
     "autoload": {
-    	"psr-4": {
-    		"Joomla\\View\\": "src/",
+        "psr-4": {
+            "Joomla\\View\\": "src/",
             "Joomla\\View\\Tests\\": "Tests/"
-    	}
+        }
     }
 }

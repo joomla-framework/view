@@ -10,6 +10,7 @@ namespace Joomla\View;
 
 use Joomla\Filesystem\Path;
 use Joomla\Model\ModelInterface;
+use BabDev\Renderer\RendererInterface;
 
 /**
  * Joomla Framework HTML View Class
@@ -18,6 +19,14 @@ use Joomla\Model\ModelInterface;
  */
 abstract class AbstractHtmlView extends AbstractView
 {
+	/**
+	 * The data array to pass to the renderer engine
+	 *
+	 * @var    array
+	 * @since  __DEPLOY_VERSION__
+	 */
+	protected $data = array();
+
 	/**
 	 * The view layout.
 	 *
@@ -36,19 +45,39 @@ abstract class AbstractHtmlView extends AbstractView
 	protected $paths;
 
 	/**
+	 * The renderer object
+	 *
+	 * @var    RendererInterface
+	 * @since  __DEPLOY_VERSION__
+	 */
+	protected $renderer;
+
+	/**
 	 * Method to instantiate the view.
 	 *
-	 * @param   ModelInterface     $model  The model object.
-	 * @param   \SplPriorityQueue  $paths  The paths queue. [@deprecated In 2.0, a RendererInterface object will be required which will manage paths.]
+	 * @param   ModelInterface     $model     The model object.
+	 * @param   RendererInterface  $renderer  The renderer object. [@note Will be typehinted and required at 3.0]
+	 * @param   \SplPriorityQueue  $paths     The paths queue. [@deprecated In 2.0, a RendererInterface object will be required which will manage paths.]
 	 *
 	 * @since   1.0
 	 */
-	public function __construct(ModelInterface $model, \SplPriorityQueue $paths = null)
+	public function __construct(ModelInterface $model, $renderer = null, \SplPriorityQueue $paths = null)
 	{
 		parent::__construct($model);
 
-		// Setup dependencies.
+		// Setup dependencies - B/C handling, check if $renderer is an instance of \SplPriorityQueue, remove at 3.0
+		if ($renderer instanceof \SplPriorityQueue)
+		{
+			$paths = $renderer;
+		}
+
 		$this->paths = isset($paths) ? $paths : $this->loadPaths();
+
+		// Set the renderer if we have it
+		if ($renderer instanceof RendererInterface)
+		{
+			$this->setRenderer($renderer);
+		}
 	}
 
 	/**
@@ -87,14 +116,32 @@ abstract class AbstractHtmlView extends AbstractView
 	}
 
 	/**
+	 * Retrieves the data array
+	 *
+	 * @return  array
+	 *
+	 * @since   __DEPLOY_VERSION__
+	 */
+	public function getData()
+	{
+		return $this->data;
+	}
+
+	/**
 	 * Method to get the view layout.
 	 *
 	 * @return  string  The layout name.
 	 *
 	 * @since   1.0
+	 * @throws  \RuntimeException
 	 */
 	public function getLayout()
 	{
+		if (is_null($this->layout))
+		{
+			throw new \RuntimeException('The layout name is not set.');
+		}
+
 		return $this->layout;
 	}
 
@@ -134,6 +181,24 @@ abstract class AbstractHtmlView extends AbstractView
 	}
 
 	/**
+	 * Method to get the renderer object.
+	 *
+	 * @return  RendererInterface  The renderer object.
+	 *
+	 * @since   __DEPLOY_VERSION__
+	 * @throws  \RuntimeException
+	 */
+	public function getRenderer()
+	{
+		if (is_null($this->renderer))
+		{
+			throw new \RuntimeException('The renderer object is not set.');
+		}
+
+		return $this->renderer;
+	}
+
+	/**
 	 * Method to render the view.
 	 *
 	 * @return  string  The rendered view.
@@ -143,25 +208,23 @@ abstract class AbstractHtmlView extends AbstractView
 	 */
 	public function render()
 	{
-		// Get the layout path.
-		$path = $this->getPath($this->getLayout());
+		return $this->getRenderer()->render($this->getLayout(), $this->getData());
+	}
 
-		// Check if the layout path was found.
-		if (!$path)
-		{
-			throw new \RuntimeException('Layout Path Not Found');
-		}
+	/**
+	 * Sets the data array
+	 *
+	 * @param   array  $data  The data array.
+	 *
+	 * @return  AbstractHtmlView  Method supports chaining.
+	 *
+	 * @since   __DEPLOY_VERSION__
+	 */
+	public function setData(array $data)
+	{
+		$this->data = $data;
 
-		// Start an output buffer.
-		ob_start();
-
-		// Load the layout.
-		include $path;
-
-		// Get the layout contents.
-		$output = ob_get_clean();
-
-		return $output;
+		return $this;
 	}
 
 	/**
@@ -193,6 +256,22 @@ abstract class AbstractHtmlView extends AbstractView
 	public function setPaths(\SplPriorityQueue $paths)
 	{
 		$this->paths = $paths;
+
+		return $this;
+	}
+
+	/**
+	 * Sets the renderer object
+	 *
+	 * @param   RendererInterface  $renderer  The renderer object.
+	 *
+	 * @return  AbstractHtmlView  Method supports chaining.
+	 *
+	 * @since   __DEPLOY_VERSION__
+	 */
+	public function setRenderer(RendererInterface $renderer)
+	{
+		$this->renderer = $renderer;
 
 		return $this;
 	}
