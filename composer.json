@@ -8,7 +8,7 @@
     "require": {
         "php": ">=5.3.10",
         "joomla/filesystem": "~1.0",
-        "joomla/model": "~2.0@dev",
+        "joomla/model": "2.0.*@dev",
         "babdev/renderer": "1.x@dev"
     },
     "require-dev": {
