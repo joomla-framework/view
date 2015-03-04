@@ -56,6 +56,13 @@ class BaseHtmlViewTest extends \PHPUnit_Framework_TestCase
 	}
 
 	/**
+	 * @covers  Joomla\View\BaseHtmlView::escape
+	 */
+	public function testEnsureTheEscapeMethodProperlyEscapesAValue()
+	{
+		$this->assertEquals('&quot;', $this->object->escape('"'));
+	}
+	/**
 	 * @covers  Joomla\View\BaseHtmlView::getLayout
 	 */
 	public function testEnsureGetLayoutReturnsTheCorrectLayout()
@@ -69,6 +76,18 @@ class BaseHtmlViewTest extends \PHPUnit_Framework_TestCase
 	public function testEnsureGetRendererReturnsTheCorrectObject()
 	{
 		$this->assertSame($this->mockRenderer, $this->object->getRenderer());
+	}
+
+	/**
+	 * @covers  Joomla\View\BaseHtmlView::__toString
+	 */
+	public function testEnsureMagicToStringMethodRendersTheView()
+	{
+		$this->mockRenderer->expects($this->any())
+			->method('render')
+			->willReturn('Rendered View');
+
+		$this->assertSame('Rendered View', (string) $this->object);
 	}
 
 	/**

@@ -99,7 +99,7 @@ class BaseHtmlView extends AbstractView
 	/**
 	 * Retrieves the renderer object
 	 *
-	 * @return  TwigRenderer
+	 * @return  RendererInterface
 	 *
 	 * @since   __DEPLOY_VERSION__
 	 */
