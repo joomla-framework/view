@@ -121,9 +121,9 @@ abstract class AbstractView implements ViewInterface
 	}
 
 	/**
-	 * Sets the data array
+	 * Sets additional data to the data array
 	 *
-	 * @param   array  $data  The data array.
+	 * @param   array  $data  Data to merge into the existing data array
 	 *
 	 * @return  AbstractView  Method allows chaining
 	 *
@@ -131,7 +131,7 @@ abstract class AbstractView implements ViewInterface
 	 */
 	public function setData(array $data)
 	{
-		$this->data = $data;
+		$this->data = array_merge($this->data, $data);
 
 		return $this;
 	}

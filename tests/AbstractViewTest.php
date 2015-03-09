@@ -101,4 +101,25 @@ class AbstractViewTest extends \PHPUnit_Framework_TestCase
 	{
 		$this->assertSame($this->instance, $this->instance->setData(array()));
 	}
+
+	/**
+	 * @covers  Joomla\View\AbstractView::setData
+	 */
+	public function testEnsureSetDataCorrectlyMergesDataArrays()
+	{
+		// Populate some base data
+		$this->instance->setData(array('foo' => 'bar'));
+
+		// Add some extra data
+		$this->instance->setData(array('joomla' => 'rocks'));
+
+		$this->assertAttributeSame(
+			array(
+				'foo' => 'bar',
+				'joomla' => 'rocks'
+			),
+			'data',
+			$this->instance
+		);
+	}
 }
