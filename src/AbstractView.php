@@ -52,25 +52,29 @@ abstract class AbstractView implements ViewInterface
 	 * @param   string  $key    The array key
 	 * @param   mixed   $value  The data value to add
 	 *
-	 * @return  void
+	 * @return  AbstractView  Method allows chaining
 	 *
 	 * @since   __DEPLOY_VERSION__
 	 */
 	public function addData($key, $value)
 	{
 		$this->data[$key] = $value;
+
+		return $this;
 	}
 
 	/**
 	 * Resets the internal data array
 	 *
-	 * @return  void
+	 * @return  AbstractView  Method allows chaining
 	 *
 	 * @since   __DEPLOY_VERSION__
 	 */
 	public function clearData()
 	{
 		$this->data = array();
+
+		return $this;
 	}
 
 	/**
@@ -105,16 +109,15 @@ abstract class AbstractView implements ViewInterface
 	 *
 	 * @param   string  $key  The array key to remove
 	 *
-	 * @return  void
+	 * @return  AbstractView  Method allows chaining
 	 *
 	 * @since   __DEPLOY_VERSION__
 	 */
 	public function removeData($key)
 	{
-		if (isset($this->data[$key]))
-		{
-			unset($this->data[$key]);
-		}
+		unset($this->data[$key]);
+
+		return $this;
 	}
 
 	/**
