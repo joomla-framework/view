@@ -69,22 +69,6 @@ class BaseHtmlView extends AbstractView
 	}
 
 	/**
-	 * Method to escape output.
-	 *
-	 * @param   string  $output  The output to escape.
-	 *
-	 * @return  string  The escaped output.
-	 *
-	 * @see     ViewInterface::escape()
-	 * @since   __DEPLOY_VERSION__
-	 */
-	public function escape($output)
-	{
-		// Escape the output.
-		return htmlspecialchars($output, ENT_COMPAT, 'UTF-8');
-	}
-
-	/**
 	 * Method to get the view layout.
 	 *
 	 * @return  string  The layout name.

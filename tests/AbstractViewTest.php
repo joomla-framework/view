@@ -48,14 +48,6 @@ class AbstractViewTest extends \PHPUnit_Framework_TestCase
 	}
 
 	/**
-	 * @covers  Joomla\View\AbstractView::escape
-	 */
-	public function testEnsureTheEscapeMethodProperlyEscapesAValue()
-	{
-		$this->assertEquals('foo', $this->instance->escape('foo'));
-	}
-
-	/**
 	 * @covers  Joomla\View\AbstractView::addData
 	 */
 	public function testEnsureAddDataCorrectlyAddsAValue()

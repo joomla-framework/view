@@ -16,17 +16,6 @@ namespace Joomla\View;
 interface ViewInterface
 {
 	/**
-	 * Method to escape output.
-	 *
-	 * @param   string  $output  The output to escape.
-	 *
-	 * @return  string  The escaped output.
-	 *
-	 * @since   1.0
-	 */
-	public function escape($output);
-
-	/**
 	 * Method to render the view.
 	 *
 	 * @return  string  The rendered view.

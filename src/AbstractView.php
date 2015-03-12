@@ -78,21 +78,6 @@ abstract class AbstractView implements ViewInterface
 	}
 
 	/**
-	 * Method to escape output.
-	 *
-	 * @param   string  $output  The output to escape.
-	 *
-	 * @return  string  The escaped output.
-	 *
-	 * @see     ViewInterface::escape()
-	 * @since   1.0
-	 */
-	public function escape($output)
-	{
-		return $output;
-	}
-
-	/**
 	 * Retrieves the data array
 	 *
 	 * @return  array

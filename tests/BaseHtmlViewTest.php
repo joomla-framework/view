@@ -56,13 +56,6 @@ class BaseHtmlViewTest extends \PHPUnit_Framework_TestCase
 	}
 
 	/**
-	 * @covers  Joomla\View\BaseHtmlView::escape
-	 */
-	public function testEnsureTheEscapeMethodProperlyEscapesAValue()
-	{
-		$this->assertEquals('&quot;', $this->object->escape('"'));
-	}
-	/**
 	 * @covers  Joomla\View\BaseHtmlView::getLayout
 	 */
 	public function testEnsureGetLayoutReturnsTheCorrectLayout()
