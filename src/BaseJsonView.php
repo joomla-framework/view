@@ -1,29 +1,29 @@
 <?php
 /**
+ * Part of the Joomla Framework View Package
+ *
  * @copyright  Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license    GNU General Public License version 2 or later; see LICENSE
  */
 
-namespace Joomla\View\Tests;
-
-use Joomla\View;
+namespace Joomla\View;
 
 /**
- * Concrete class extending JViewBase.
+ * Joomla Framework JSON View Class
  *
- * @since  1.0
+ * @since  __DEPLOY_VERSION__
  */
-class BaseView extends View\AbstractView
+class BaseJsonView extends AbstractView
 {
 	/**
 	 * Method to render the view.
 	 *
 	 * @return  string  The rendered view.
 	 *
-	 * @since   1.0
-	 * @throws  RuntimeException
+	 * @since   __DEPLOY_VERSION__
 	 */
 	public function render()
 	{
+		return json_encode($this->getData());
 	}
 }

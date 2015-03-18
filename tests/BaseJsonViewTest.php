@@ -1,0 +1,51 @@
+<?php
+/**
+ * @copyright  Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
+ * @license    GNU General Public License version 2 or later; see LICENSE
+ */
+
+namespace Joomla\View\Tests;
+
+use Joomla\View\BaseJsonView;
+
+/**
+ * Test class for \Joomla\View\BaseJsonView
+ */
+class BaseJsonViewTest extends \PHPUnit_Framework_TestCase
+{
+	/**
+	 * Mock ModelInterface
+	 *
+	 * @var  \Joomla\Model\AbstractModel
+	 */
+	private $mockModel;
+
+	/**
+	 * Test object
+	 *
+	 * @var  BaseJsonView
+	 */
+	private $object;
+
+	/**
+	 * Sets up the fixture, for example, open a network connection.
+	 * This method is called before a test is executed.
+	 */
+	protected function setUp()
+	{
+		parent::setUp();
+
+		$this->mockModel = $this->getMockForAbstractClass('\\Joomla\\Model\\AbstractModel');
+		$this->object    = new BaseJsonView($this->mockModel);
+	}
+
+	/**
+	 * @covers  Joomla\View\BaseJsonView::render
+	 */
+	public function testEnsureRenderReturnsTheDataInJsonFormat()
+	{
+		$this->object->setData(array('test' => 'value'));
+
+		$this->assertSame(json_encode($this->object->getData()), $this->object->render());
+	}
+}

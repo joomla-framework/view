@@ -18,6 +18,14 @@ use Joomla\Model\ModelInterface;
 abstract class AbstractView implements ViewInterface
 {
 	/**
+	 * The data array to pass to the renderer
+	 *
+	 * @var    array
+	 * @since  __DEPLOY_VERSION__
+	 */
+	private $data = array();
+
+	/**
 	 * The model object.
 	 *
 	 * @var    ModelInterface
@@ -39,17 +47,77 @@ abstract class AbstractView implements ViewInterface
 	}
 
 	/**
-	 * Method to escape output.
+	 * Adds an object to the data array
 	 *
-	 * @param   string  $output  The output to escape.
+	 * @param   string  $key    The array key
+	 * @param   mixed   $value  The data value to add
 	 *
-	 * @return  string  The escaped output.
+	 * @return  AbstractView  Method allows chaining
 	 *
-	 * @see     ViewInterface::escape()
-	 * @since   1.0
+	 * @since   __DEPLOY_VERSION__
 	 */
-	public function escape($output)
+	public function addData($key, $value)
 	{
-		return $output;
+		$this->data[$key] = $value;
+
+		return $this;
+	}
+
+	/**
+	 * Resets the internal data array
+	 *
+	 * @return  AbstractView  Method allows chaining
+	 *
+	 * @since   __DEPLOY_VERSION__
+	 */
+	public function clearData()
+	{
+		$this->data = array();
+
+		return $this;
+	}
+
+	/**
+	 * Retrieves the data array
+	 *
+	 * @return  array
+	 *
+	 * @since   __DEPLOY_VERSION__
+	 */
+	public function getData()
+	{
+		return $this->data;
+	}
+
+	/**
+	 * Removes an object to the data array
+	 *
+	 * @param   string  $key  The array key to remove
+	 *
+	 * @return  AbstractView  Method allows chaining
+	 *
+	 * @since   __DEPLOY_VERSION__
+	 */
+	public function removeData($key)
+	{
+		unset($this->data[$key]);
+
+		return $this;
+	}
+
+	/**
+	 * Sets additional data to the data array
+	 *
+	 * @param   array  $data  Data to merge into the existing data array
+	 *
+	 * @return  AbstractView  Method allows chaining
+	 *
+	 * @since   __DEPLOY_VERSION__
+	 */
+	public function setData(array $data)
+	{
+		$this->data = array_merge($this->data, $data);
+
+		return $this;
 	}
 }

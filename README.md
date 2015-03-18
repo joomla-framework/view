@@ -1,4 +1,4 @@
-# The View Package [![Build Status](https://travis-ci.org/joomla-framework/view.png?branch=master)](https://travis-ci.org/joomla-framework/view)
+# The View Package [![Build Status](https://travis-ci.org/joomla-framework/view.png?branch=master)](https://travis-ci.org/joomla-framework/view) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/joomla-framework/view/badges/quality-score.png?b=2.0-dev)](https://scrutinizer-ci.com/g/joomla-framework/view/?branch=2.0-dev)
 
 ## Interfaces
 
