@@ -23,7 +23,7 @@ class BaseHtmlViewTest extends \PHPUnit_Framework_TestCase
 	/**
 	 * Mock RendererInterface
 	 *
-	 * @var  \BabDev\Renderer\AbstractRenderer
+	 * @var  \Joomla\Renderer\AbstractRenderer
 	 */
 	private $mockRenderer;
 
@@ -43,7 +43,7 @@ class BaseHtmlViewTest extends \PHPUnit_Framework_TestCase
 		parent::setUp();
 
 		$this->mockModel    = $this->getMockForAbstractClass('\\Joomla\\Model\\AbstractModel');
-		$this->mockRenderer = $this->getMockForAbstractClass('\\BabDev\\Renderer\\AbstractRenderer');
+		$this->mockRenderer = $this->getMockForAbstractClass('\\Joomla\\Renderer\\AbstractRenderer');
 		$this->object       = new BaseHtmlView($this->mockModel, $this->mockRenderer);
 	}
 

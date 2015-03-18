@@ -8,8 +8,8 @@
 
 namespace Joomla\View;
 
-use BabDev\Renderer\RendererInterface;
 use Joomla\Model\ModelInterface;
+use Joomla\Renderer\RendererInterface;
 
 /**
  * Joomla Framework HTML View Class
