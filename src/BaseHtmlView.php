@@ -109,7 +109,7 @@ class BaseHtmlView extends AbstractView
 	 *
 	 * @param   string  $layout  The layout name.
 	 *
-	 * @return  AbstractHtmlView  Method supports chaining.
+	 * @return  BaseHtmlView  Method supports chaining.
 	 *
 	 * @since   __DEPLOY_VERSION__
 	 */
@@ -125,7 +125,7 @@ class BaseHtmlView extends AbstractView
 	 *
 	 * @param   RendererInterface  $renderer  The renderer object.
 	 *
-	 * @return  AbstractHtmlView  Method allows chaining
+	 * @return  BaseHtmlView  Method allows chaining
 	 *
 	 * @since   __DEPLOY_VERSION__
 	 */
