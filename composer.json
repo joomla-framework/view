@@ -7,7 +7,7 @@
     "license": "GPL-2.0+",
     "require": {
         "php": ">=5.3.10",
-        "joomla/model": "2.0.*@dev",
+        "joomla/model": "~1.0|2.0.*@dev",
         "joomla/renderer": "2.x@dev"
     },
     "require-dev": {
