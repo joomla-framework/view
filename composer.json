@@ -6,14 +6,14 @@
     "homepage": "https://github.com/joomla-framework/view",
     "license": "GPL-2.0+",
     "require": {
-        "php": ">=5.3.10",
-        "joomla/model": "~1.0|2.0.*@dev",
-        "joomla/renderer": "2.x@dev"
+        "php": ">=5.3.10|>=7.0",
+        "joomla/model": "~1.0|~2.0@dev",
+        "joomla/renderer": "~2.0@dev"
     },
     "require-dev": {
-        "joomla/test": "1.*@stable",
-        "phpunit/phpunit": "4.*@stable",
-        "squizlabs/php_codesniffer": "1.*@stable"
+        "joomla/test": "~1.0",
+        "phpunit/phpunit": "~4.8|~5.0",
+        "squizlabs/php_codesniffer": "1.*"
     },
     "autoload": {
         "psr-4": {
@@ -26,5 +26,5 @@
 	        "dev-2.0-dev": "2.0-dev"
         }
     },
-    "minimum-stability": "dev"
+    "prefer-stable": true
 }
