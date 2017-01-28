@@ -14,13 +14,6 @@ use Joomla\View\BaseHtmlView;
 class BaseHtmlViewTest extends \PHPUnit_Framework_TestCase
 {
 	/**
-	 * Mock ModelInterface
-	 *
-	 * @var  \Joomla\Model\AbstractModel
-	 */
-	private $mockModel;
-
-	/**
 	 * Mock RendererInterface
 	 *
 	 * @var  \Joomla\Renderer\AbstractRenderer
@@ -42,9 +35,8 @@ class BaseHtmlViewTest extends \PHPUnit_Framework_TestCase
 	{
 		parent::setUp();
 
-		$this->mockModel    = $this->getMockForAbstractClass('\\Joomla\\Model\\AbstractModel');
 		$this->mockRenderer = $this->getMockForAbstractClass('\\Joomla\\Renderer\\AbstractRenderer');
-		$this->object       = new BaseHtmlView($this->mockModel, $this->mockRenderer);
+		$this->object       = new BaseHtmlView($this->mockRenderer);
 	}
 
 	/**

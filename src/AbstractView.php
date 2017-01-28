@@ -8,8 +8,6 @@
 
 namespace Joomla\View;
 
-use Joomla\Model\ModelInterface;
-
 /**
  * Joomla Framework Abstract View Class
  *
@@ -24,29 +22,6 @@ abstract class AbstractView implements ViewInterface
 	 * @since  __DEPLOY_VERSION__
 	 */
 	private $data = array();
-
-	/**
-	 * The model object.
-	 *
-	 * @var    ModelInterface
-	 * @since  1.0
-	 * @deprecated  2.0  A view object will not require a ModelInterface implementation
-	 */
-	protected $model;
-
-	/**
-	 * Method to instantiate the view.
-	 *
-	 * @param   ModelInterface  $model  The model object.
-	 *
-	 * @since   1.0
-	 * @deprecated  2.0  A view object will not require a ModelInterface implementation
-	 */
-	public function __construct(ModelInterface $model = null)
-	{
-		// Setup dependencies.
-		$this->model = $model;
-	}
 
 	/**
 	 * Adds an object to the data array

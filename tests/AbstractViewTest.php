@@ -12,13 +12,6 @@ namespace Joomla\View\Tests;
 class AbstractViewTest extends \PHPUnit_Framework_TestCase
 {
 	/**
-	 * Mock model object
-	 *
-	 * @var  \Joomla\Model\AbstractModel
-	 */
-	private $mockModel;
-
-	/**
 	 * Test object
 	 *
 	 * @var  \Joomla\View\AbstractView
@@ -35,16 +28,7 @@ class AbstractViewTest extends \PHPUnit_Framework_TestCase
 	{
 		parent::setUp();
 
-		$this->mockModel = $this->getMockForAbstractClass('\\Joomla\\Model\\AbstractModel');
-		$this->instance  = $this->getMockForAbstractClass('\\Joomla\\View\\AbstractView', array($this->mockModel));
-	}
-
-	/**
-	 * @covers  Joomla\View\AbstractView::__construct
-	 */
-	public function testEnsureTheConstructorSetsTheValuesCorrectly()
-	{
-		$this->assertAttributeInstanceOf('Joomla\\Model\\ModelInterface', 'model', $this->instance);
+		$this->instance = $this->getMockForAbstractClass('\\Joomla\\View\\AbstractView');
 	}
 
 	/**

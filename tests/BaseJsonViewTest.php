@@ -14,13 +14,6 @@ use Joomla\View\BaseJsonView;
 class BaseJsonViewTest extends \PHPUnit_Framework_TestCase
 {
 	/**
-	 * Mock ModelInterface
-	 *
-	 * @var  \Joomla\Model\AbstractModel
-	 */
-	private $mockModel;
-
-	/**
 	 * Test object
 	 *
 	 * @var  BaseJsonView
@@ -35,8 +28,7 @@ class BaseJsonViewTest extends \PHPUnit_Framework_TestCase
 	{
 		parent::setUp();
 
-		$this->mockModel = $this->getMockForAbstractClass('\\Joomla\\Model\\AbstractModel');
-		$this->object    = new BaseJsonView($this->mockModel);
+		$this->object = new BaseJsonView;
 	}
 
 	/**

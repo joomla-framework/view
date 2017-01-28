@@ -8,7 +8,6 @@
 
 namespace Joomla\View;
 
-use Joomla\Model\ModelInterface;
 use Joomla\Renderer\RendererInterface;
 
 /**
@@ -37,15 +36,12 @@ class BaseHtmlView extends AbstractView
 	/**
 	 * Method to instantiate the view.
 	 *
-	 * @param   ModelInterface     $model     The model object.
 	 * @param   RendererInterface  $renderer  The renderer object.
 	 *
 	 * @since   __DEPLOY_VERSION__
 	 */
-	public function __construct(ModelInterface $model, RendererInterface $renderer)
+	public function __construct(RendererInterface $renderer)
 	{
-		parent::__construct($model);
-
 		$this->setRenderer($renderer);
 	}
 
