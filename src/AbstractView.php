@@ -30,6 +30,7 @@ abstract class AbstractView implements ViewInterface
 	 *
 	 * @var    ModelInterface
 	 * @since  1.0
+	 * @deprecated  2.0  A view object will not require a ModelInterface implementation
 	 */
 	protected $model;
 
@@ -39,8 +40,9 @@ abstract class AbstractView implements ViewInterface
 	 * @param   ModelInterface  $model  The model object.
 	 *
 	 * @since   1.0
+	 * @deprecated  2.0  A view object will not require a ModelInterface implementation
 	 */
-	public function __construct(ModelInterface $model)
+	public function __construct(ModelInterface $model = null)
 	{
 		// Setup dependencies.
 		$this->model = $model;
