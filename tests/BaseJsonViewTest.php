@@ -7,11 +7,12 @@
 namespace Joomla\View\Tests;
 
 use Joomla\View\BaseJsonView;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test class for \Joomla\View\BaseJsonView
  */
-class BaseJsonViewTest extends \PHPUnit_Framework_TestCase
+class BaseJsonViewTest extends TestCase
 {
 	/**
 	 * Test object

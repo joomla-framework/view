@@ -7,11 +7,12 @@
 namespace Joomla\View\Tests;
 
 use Joomla\View\BaseHtmlView;
+use PHPUnit\Framework\TestCase;
 
 /**
  * Test class for \Joomla\View\BaseHtmlView
  */
-class BaseHtmlViewTest extends \PHPUnit_Framework_TestCase
+class BaseHtmlViewTest extends TestCase
 {
 	/**
 	 * Mock RendererInterface

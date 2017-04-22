@@ -6,10 +6,12 @@
 
 namespace Joomla\View\Tests;
 
+use PHPUnit\Framework\TestCase;
+
 /**
  * Test class for \Joomla\View\AbstractView
  */
-class AbstractViewTest extends \PHPUnit_Framework_TestCase
+class AbstractViewTest extends TestCase
 {
 	/**
 	 * Test object
