@@ -21,9 +21,9 @@ matrix:
       # This empty flag removes the prefer-stable switch to cause dev dependencies to be installed
       env: COMPOSER_FLAGS=""
     - php: 7.1
-    - php: hhvm
+    - php: nightly
   allow_failures:
-    - php: hhvm
+    - php: nightly
 
 before_script:
   - composer self-update
