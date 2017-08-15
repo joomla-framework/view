@@ -6,6 +6,7 @@
 
 namespace Joomla\View\Tests;
 
+use Joomla\Renderer\RendererInterface;
 use Joomla\View\BaseHtmlView;
 use PHPUnit\Framework\TestCase;
 
@@ -15,9 +16,9 @@ use PHPUnit\Framework\TestCase;
 class BaseHtmlViewTest extends TestCase
 {
 	/**
-	 * Mock RendererInterface
+	 * Mock renderer
 	 *
-	 * @var  \Joomla\Renderer\AbstractRenderer
+	 * @var  RendererInterface
 	 */
 	private $mockRenderer;
 
@@ -36,7 +37,7 @@ class BaseHtmlViewTest extends TestCase
 	{
 		parent::setUp();
 
-		$this->mockRenderer = $this->getMockForAbstractClass('\\Joomla\\Renderer\\AbstractRenderer');
+		$this->mockRenderer = $this->getMockBuilder(RendererInterface::class)->getMock();
 		$this->object       = new BaseHtmlView($this->mockRenderer);
 	}
 

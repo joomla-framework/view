@@ -71,7 +71,7 @@ class BaseHtmlView extends AbstractView
 	 *
 	 * @since   __DEPLOY_VERSION__
 	 */
-	public function getLayout()
+	public function getLayout(): string
 	{
 		return $this->layout;
 	}
@@ -83,7 +83,7 @@ class BaseHtmlView extends AbstractView
 	 *
 	 * @since   __DEPLOY_VERSION__
 	 */
-	public function getRenderer()
+	public function getRenderer(): RendererInterface
 	{
 		return $this->renderer;
 	}
@@ -105,11 +105,11 @@ class BaseHtmlView extends AbstractView
 	 *
 	 * @param   string  $layout  The layout name.
 	 *
-	 * @return  BaseHtmlView  Method supports chaining.
+	 * @return  $this
 	 *
 	 * @since   __DEPLOY_VERSION__
 	 */
-	public function setLayout($layout)
+	public function setLayout(string $layout)
 	{
 		$this->layout = $layout;
 
@@ -121,7 +121,7 @@ class BaseHtmlView extends AbstractView
 	 *
 	 * @param   RendererInterface  $renderer  The renderer object.
 	 *
-	 * @return  BaseHtmlView  Method allows chaining
+	 * @return  $this
 	 *
 	 * @since   __DEPLOY_VERSION__
 	 */

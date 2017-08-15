@@ -37,7 +37,7 @@ class BaseJsonViewTest extends TestCase
 	 */
 	public function testEnsureRenderReturnsTheDataInJsonFormat()
 	{
-		$this->object->setData(array('test' => 'value'));
+		$this->object->setData(['test' => 'value']);
 
 		$this->assertSame(json_encode($this->object->getData()), $this->object->render());
 	}

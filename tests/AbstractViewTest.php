@@ -6,6 +6,7 @@
 
 namespace Joomla\View\Tests;
 
+use Joomla\View\AbstractView;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -16,7 +17,7 @@ class AbstractViewTest extends TestCase
 	/**
 	 * Test object
 	 *
-	 * @var  \Joomla\View\AbstractView
+	 * @var  AbstractView
 	 */
 	private $instance;
 
@@ -30,7 +31,7 @@ class AbstractViewTest extends TestCase
 	{
 		parent::setUp();
 
-		$this->instance = $this->getMockForAbstractClass('\\Joomla\\View\\AbstractView');
+		$this->instance = $this->getMockForAbstractClass(AbstractView::class);
 	}
 
 	/**
@@ -40,7 +41,7 @@ class AbstractViewTest extends TestCase
 	{
 		$this->instance->addData('test', 'value');
 
-		$this->assertAttributeSame(array('test' => 'value'), 'data', $this->instance);
+		$this->assertAttributeSame(['test' => 'value'], 'data', $this->instance);
 	}
 
 	/**
@@ -58,7 +59,7 @@ class AbstractViewTest extends TestCase
 	 */
 	public function testEnsureGetDataReturnsAnArray()
 	{
-		$this->assertSame(array(), $this->instance->getData());
+		$this->assertSame([], $this->instance->getData());
 	}
 
 	/**
@@ -77,7 +78,7 @@ class AbstractViewTest extends TestCase
 	 */
 	public function testEnsureSetDataReturnsAnInstanceOfThisObject()
 	{
-		$this->assertSame($this->instance, $this->instance->setData(array()));
+		$this->assertSame($this->instance, $this->instance->setData([]));
 	}
 
 	/**
@@ -86,16 +87,16 @@ class AbstractViewTest extends TestCase
 	public function testEnsureSetDataCorrectlyMergesDataArrays()
 	{
 		// Populate some base data
-		$this->instance->setData(array('foo' => 'bar'));
+		$this->instance->setData(['foo' => 'bar']);
 
 		// Add some extra data
-		$this->instance->setData(array('joomla' => 'rocks'));
+		$this->instance->setData(['joomla' => 'rocks']);
 
 		$this->assertAttributeSame(
-			array(
-				'foo' => 'bar',
-				'joomla' => 'rocks'
-			),
+			[
+				'foo'    => 'bar',
+				'joomla' => 'rocks',
+			],
 			'data',
 			$this->instance
 		);
