@@ -82,7 +82,7 @@ class BaseHtmlViewTest extends TestCase
 	 */
 	public function testEnsureRenderReturnsTheDataReceivedFromTheRenderer()
 	{
-		$this->assertNull($this->object->render());
+		$this->assertEmpty($this->object->render());
 	}
 
 	/**
