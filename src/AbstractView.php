@@ -49,7 +49,7 @@ abstract class AbstractView implements ViewInterface
 	 */
 	public function clearData()
 	{
-		$this->data = array();
+		$this->data = [];
 
 		return $this;
 	}
