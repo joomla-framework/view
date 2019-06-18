@@ -7,6 +7,7 @@
 namespace Joomla\View\Tests;
 
 use Joomla\View\AbstractView;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -17,7 +18,7 @@ class AbstractViewTest extends TestCase
 	/**
 	 * Test object
 	 *
-	 * @var  AbstractView
+	 * @var  MockObject|AbstractView
 	 */
 	private $instance;
 
@@ -27,78 +28,42 @@ class AbstractViewTest extends TestCase
 	 *
 	 * @return  void
 	 */
-	protected function setUp()
+	protected function setUp(): void
 	{
 		parent::setUp();
 
 		$this->instance = $this->getMockForAbstractClass(AbstractView::class);
 	}
 
-	/**
-	 * @covers  Joomla\View\AbstractView::addData
-	 */
-	public function testEnsureAddDataCorrectlyAddsAValue()
+	public function testViewDataCanBeManaged()
 	{
+		$this->assertSame($this->instance, $this->instance->addData('test', 'value'), 'addData supports chaining');
+
+		$this->assertSame(['test' => 'value'], $this->instance->getData());
+
+		$this->assertSame($this->instance, $this->instance->clearData(), 'clearData supports chaining');
+
+		$this->assertEmpty($this->instance->getData());
+
 		$this->instance->addData('test', 'value');
 
-		$this->assertAttributeSame(['test' => 'value'], 'data', $this->instance);
-	}
+		$this->assertSame($this->instance, $this->instance->removeData('test'), 'removeData supports chaining');
 
-	/**
-	 * @covers  Joomla\View\AbstractView::clearData
-	 */
-	public function testEnsureClearDataResetsTheDataArray()
-	{
-		$this->instance->clearData();
+		$this->assertEmpty($this->instance->getData());
 
-		$this->assertAttributeEmpty('data', $this->instance);
-	}
-
-	/**
-	 * @covers  Joomla\View\AbstractView::getData
-	 */
-	public function testEnsureGetDataReturnsAnArray()
-	{
-		$this->assertSame([], $this->instance->getData());
-	}
-
-	/**
-	 * @covers  Joomla\View\AbstractView::removeData
-	 */
-	public function testEnsureRemoveDataCorrectlyAddsAValue()
-	{
-		$this->instance->addData('test', 'value');
-		$this->instance->removeData('test');
-
-		$this->assertAttributeEmpty('data', $this->instance);
-	}
-
-	/**
-	 * @covers  Joomla\View\AbstractView::setData
-	 */
-	public function testEnsureSetDataReturnsAnInstanceOfThisObject()
-	{
-		$this->assertSame($this->instance, $this->instance->setData([]));
-	}
-
-	/**
-	 * @covers  Joomla\View\AbstractView::setData
-	 */
-	public function testEnsureSetDataCorrectlyMergesDataArrays()
-	{
-		// Populate some base data
-		$this->instance->setData(['foo' => 'bar']);
+		$this->assertSame($this->instance, $this->instance->setData(['test' => 'value']), 'setData supports chaining');
+		$this->assertSame(['test' => 'value'], $this->instance->getData());
 
 		// Add some extra data
 		$this->instance->setData(['joomla' => 'rocks']);
 
-		$this->assertAttributeSame(
+		$this->assertSame(
 			[
-				'foo'    => 'bar',
+				'test'   => 'value',
 				'joomla' => 'rocks',
 			],
-			'data',
-			$this->instance
+			$this->instance->getData(),
+			'Data is merged when calling setData()'
 		);
 	}
 }

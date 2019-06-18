@@ -8,6 +8,7 @@ namespace Joomla\View\Tests;
 
 use Joomla\Renderer\RendererInterface;
 use Joomla\View\BaseHtmlView;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -18,7 +19,7 @@ class BaseHtmlViewTest extends TestCase
 	/**
 	 * Mock renderer
 	 *
-	 * @var  RendererInterface
+	 * @var  MockObject|RendererInterface
 	 */
 	private $mockRenderer;
 
@@ -33,41 +34,19 @@ class BaseHtmlViewTest extends TestCase
 	 * Sets up the fixture, for example, open a network connection.
 	 * This method is called before a test is executed.
 	 */
-	protected function setUp()
+	protected function setUp(): void
 	{
 		parent::setUp();
 
-		$this->mockRenderer = $this->getMockBuilder(RendererInterface::class)->getMock();
+		$this->mockRenderer = $this->createMock(RendererInterface::class);
 		$this->object       = new BaseHtmlView($this->mockRenderer);
 	}
 
-	/**
-	 * @covers  Joomla\View\BaseHtmlView::__construct
-	 */
 	public function testEnsureTheConstructorSetsTheValuesCorrectly()
-	{
-		$this->assertAttributeSame($this->mockRenderer, 'renderer', $this->object);
-	}
-
-	/**
-	 * @covers  Joomla\View\BaseHtmlView::getLayout
-	 */
-	public function testEnsureGetLayoutReturnsTheCorrectLayout()
-	{
-		$this->assertSame('default', $this->object->getLayout());
-	}
-
-	/**
-	 * @covers  Joomla\View\BaseHtmlView::getRenderer
-	 */
-	public function testEnsureGetRendererReturnsTheCorrectObject()
 	{
 		$this->assertSame($this->mockRenderer, $this->object->getRenderer());
 	}
 
-	/**
-	 * @covers  Joomla\View\BaseHtmlView::__toString
-	 */
 	public function testEnsureMagicToStringMethodRendersTheView()
 	{
 		$this->mockRenderer->expects($this->any())
@@ -77,27 +56,22 @@ class BaseHtmlViewTest extends TestCase
 		$this->assertSame('Rendered View', (string) $this->object);
 	}
 
-	/**
-	 * @covers  Joomla\View\BaseHtmlView::render
-	 */
 	public function testEnsureRenderReturnsTheDataReceivedFromTheRenderer()
 	{
 		$this->assertEmpty($this->object->render());
 	}
 
-	/**
-	 * @covers  Joomla\View\BaseHtmlView::setLayout
-	 */
-	public function testEnsureSetLayoutReturnsAnInstanceOfThisObject()
+	public function testTheViewLayoutCanBeManaged()
 	{
 		$this->assertSame($this->object, $this->object->setLayout('layout'));
+		$this->assertSame('layout', $this->object->getLayout());
 	}
 
-	/**
-	 * @covers  Joomla\View\BaseHtmlView::setRenderer
-	 */
-	public function testEnsureSetRendererReturnsAnInstanceOfThisObject()
+	public function testTheViewRendererCanBeManaged()
 	{
-		$this->assertSame($this->object, $this->object->setRenderer($this->mockRenderer));
+		$renderer = $this->createMock(RendererInterface::class);
+
+		$this->assertSame($this->object, $this->object->setRenderer($renderer));
+		$this->assertSame($renderer, $this->object->getRenderer());
 	}
 }
