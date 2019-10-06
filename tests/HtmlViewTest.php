@@ -7,14 +7,14 @@
 namespace Joomla\View\Tests;
 
 use Joomla\Renderer\RendererInterface;
-use Joomla\View\BaseHtmlView;
+use Joomla\View\HtmlView;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 /**
- * Test class for \Joomla\View\BaseHtmlView
+ * Test class for \Joomla\View\HtmlView
  */
-class BaseHtmlViewTest extends TestCase
+class HtmlViewTest extends TestCase
 {
 	/**
 	 * Mock renderer
@@ -26,7 +26,7 @@ class BaseHtmlViewTest extends TestCase
 	/**
 	 * Test object
 	 *
-	 * @var  BaseHtmlView
+	 * @var  HtmlView
 	 */
 	private $object;
 
@@ -39,7 +39,7 @@ class BaseHtmlViewTest extends TestCase
 		parent::setUp();
 
 		$this->mockRenderer = $this->createMock(RendererInterface::class);
-		$this->object       = new BaseHtmlView($this->mockRenderer);
+		$this->object       = new HtmlView($this->mockRenderer);
 	}
 
 	public function testEnsureTheConstructorSetsTheValuesCorrectly()

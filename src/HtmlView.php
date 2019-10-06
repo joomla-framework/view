@@ -15,7 +15,7 @@ use Joomla\Renderer\RendererInterface;
  *
  * @since  __DEPLOY_VERSION__
  */
-class BaseHtmlView extends AbstractView
+class HtmlView extends AbstractView
 {
 	/**
 	 * The view layout.

@@ -13,7 +13,7 @@ namespace Joomla\View;
  *
  * @since  __DEPLOY_VERSION__
  */
-class BaseJsonView extends AbstractView
+class JsonView extends AbstractView
 {
 	/**
 	 * Method to render the view.

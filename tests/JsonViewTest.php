@@ -6,18 +6,18 @@
 
 namespace Joomla\View\Tests;
 
-use Joomla\View\BaseJsonView;
+use Joomla\View\JsonView;
 use PHPUnit\Framework\TestCase;
 
 /**
- * Test class for \Joomla\View\BaseJsonView
+ * Test class for \Joomla\View\JsonView
  */
-class BaseJsonViewTest extends TestCase
+class JsonViewTest extends TestCase
 {
 	/**
 	 * Test object
 	 *
-	 * @var  BaseJsonView
+	 * @var  JsonView
 	 */
 	private $object;
 
@@ -29,7 +29,7 @@ class BaseJsonViewTest extends TestCase
 	{
 		parent::setUp();
 
-		$this->object = new BaseJsonView;
+		$this->object = new JsonView;
 	}
 
 	public function testEnsureRenderReturnsTheDataInJsonFormat()
