@@ -2,7 +2,7 @@
 /**
  * Part of the Joomla Framework View Package
  *
- * @copyright  Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
+ * @copyright  Copyright (C) 2005 - 2020 Open Source Matters, Inc. All rights reserved.
  * @license    GNU General Public License version 2 or later; see LICENSE
  */
 
@@ -13,7 +13,7 @@ use Joomla\Renderer\RendererInterface;
 /**
  * Joomla Framework HTML View Class
  *
- * @since  __DEPLOY_VERSION__
+ * @since  2.0.0-beta
  */
 class HtmlView extends AbstractView
 {
@@ -21,7 +21,7 @@ class HtmlView extends AbstractView
 	 * The view layout.
 	 *
 	 * @var    string
-	 * @since  __DEPLOY_VERSION__
+	 * @since  2.0.0-beta
 	 */
 	protected $layout = 'default';
 
@@ -29,7 +29,7 @@ class HtmlView extends AbstractView
 	 * The renderer object
 	 *
 	 * @var    RendererInterface
-	 * @since  __DEPLOY_VERSION__
+	 * @since  2.0.0-beta
 	 */
 	private $renderer;
 
@@ -38,7 +38,7 @@ class HtmlView extends AbstractView
 	 *
 	 * @param   RendererInterface  $renderer  The renderer object.
 	 *
-	 * @since   __DEPLOY_VERSION__
+	 * @since   2.0.0-beta
 	 */
 	public function __construct(RendererInterface $renderer)
 	{
@@ -50,7 +50,7 @@ class HtmlView extends AbstractView
 	 *
 	 * @return  string
 	 *
-	 * @since   __DEPLOY_VERSION__
+	 * @since   2.0.0-beta
 	 */
 	public function __toString()
 	{
@@ -69,7 +69,7 @@ class HtmlView extends AbstractView
 	 *
 	 * @return  string  The layout name.
 	 *
-	 * @since   __DEPLOY_VERSION__
+	 * @since   2.0.0-beta
 	 */
 	public function getLayout(): string
 	{
@@ -81,7 +81,7 @@ class HtmlView extends AbstractView
 	 *
 	 * @return  RendererInterface
 	 *
-	 * @since   __DEPLOY_VERSION__
+	 * @since   2.0.0-beta
 	 */
 	public function getRenderer(): RendererInterface
 	{
@@ -93,7 +93,7 @@ class HtmlView extends AbstractView
 	 *
 	 * @return  string  The rendered view.
 	 *
-	 * @since   __DEPLOY_VERSION__
+	 * @since   2.0.0-beta
 	 */
 	public function render()
 	{
@@ -107,7 +107,7 @@ class HtmlView extends AbstractView
 	 *
 	 * @return  $this
 	 *
-	 * @since   __DEPLOY_VERSION__
+	 * @since   2.0.0-beta
 	 */
 	public function setLayout(string $layout)
 	{
@@ -123,7 +123,7 @@ class HtmlView extends AbstractView
 	 *
 	 * @return  $this
 	 *
-	 * @since   __DEPLOY_VERSION__
+	 * @since   2.0.0-beta
 	 */
 	public function setRenderer(RendererInterface $renderer)
 	{
