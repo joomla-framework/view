@@ -19,7 +19,7 @@ abstract class AbstractView implements ViewInterface
 	 * The data array to pass to the renderer
 	 *
 	 * @var    array
-	 * @since  2.0.0-beta
+	 * @since  2.0.0
 	 */
 	private $data = [];
 
@@ -31,7 +31,7 @@ abstract class AbstractView implements ViewInterface
 	 *
 	 * @return  $this
 	 *
-	 * @since   2.0.0-beta
+	 * @since   2.0.0
 	 */
 	public function addData(string $key, $value)
 	{
@@ -45,7 +45,7 @@ abstract class AbstractView implements ViewInterface
 	 *
 	 * @return  $this
 	 *
-	 * @since   2.0.0-beta
+	 * @since   2.0.0
 	 */
 	public function clearData()
 	{
@@ -59,7 +59,7 @@ abstract class AbstractView implements ViewInterface
 	 *
 	 * @return  array
 	 *
-	 * @since   2.0.0-beta
+	 * @since   2.0.0
 	 */
 	public function getData(): array
 	{
@@ -73,7 +73,7 @@ abstract class AbstractView implements ViewInterface
 	 *
 	 * @return  $this
 	 *
-	 * @since   2.0.0-beta
+	 * @since   2.0.0
 	 */
 	public function removeData(string $key)
 	{
@@ -89,7 +89,7 @@ abstract class AbstractView implements ViewInterface
 	 *
 	 * @return  $this
 	 *
-	 * @since   2.0.0-beta
+	 * @since   2.0.0
 	 */
 	public function setData(array $data)
 	{

@@ -11,7 +11,7 @@ namespace Joomla\View;
 /**
  * Joomla Framework JSON View Class
  *
- * @since  2.0.0-beta
+ * @since  2.0.0
  */
 class JsonView extends AbstractView
 {
@@ -20,7 +20,7 @@ class JsonView extends AbstractView
 	 *
 	 * @return  string  The rendered view.
 	 *
-	 * @since   2.0.0-beta
+	 * @since   2.0.0
 	 */
 	public function render()
 	{
