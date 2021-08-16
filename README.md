@@ -16,5 +16,5 @@ The View package provides an abstraction layer for rendering content in MVC orie
 To install the package, you can simply run the following from the command line:
            
 ```sh
-composer require joomla/view
+composer require joomla/view "~2.0~
 ```
