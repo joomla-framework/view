@@ -14,28 +14,28 @@ use PHPUnit\Framework\TestCase;
  */
 class JsonViewTest extends TestCase
 {
-	/**
-	 * Test object
-	 *
-	 * @var  JsonView
-	 */
-	private $object;
+    /**
+     * Test object
+     *
+     * @var  JsonView
+     */
+    private $object;
 
-	/**
-	 * Sets up the fixture, for example, open a network connection.
-	 * This method is called before a test is executed.
-	 */
-	protected function setUp(): void
-	{
-		parent::setUp();
+    /**
+     * Sets up the fixture, for example, open a network connection.
+     * This method is called before a test is executed.
+     */
+    protected function setUp(): void
+    {
+        parent::setUp();
 
-		$this->object = new JsonView;
-	}
+        $this->object = new JsonView();
+    }
 
-	public function testEnsureRenderReturnsTheDataInJsonFormat()
-	{
-		$this->object->setData(['test' => 'value']);
+    public function testEnsureRenderReturnsTheDataInJsonFormat()
+    {
+        $this->object->setData(['test' => 'value']);
 
-		$this->assertSame(json_encode($this->object->getData()), $this->object->render());
-	}
+        $this->assertSame(json_encode($this->object->getData()), $this->object->render());
+    }
 }

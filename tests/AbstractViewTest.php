@@ -15,55 +15,55 @@ use PHPUnit\Framework\TestCase;
  */
 class AbstractViewTest extends TestCase
 {
-	/**
-	 * Test object
-	 *
-	 * @var  MockObject|AbstractView
-	 */
-	private $instance;
+    /**
+     * Test object
+     *
+     * @var  MockObject|AbstractView
+     */
+    private $instance;
 
-	/**
-	 * Sets up the fixture, for example, open a network connection.
-	 * This method is called before a test is executed.
-	 *
-	 * @return  void
-	 */
-	protected function setUp(): void
-	{
-		parent::setUp();
+    /**
+     * Sets up the fixture, for example, open a network connection.
+     * This method is called before a test is executed.
+     *
+     * @return  void
+     */
+    protected function setUp(): void
+    {
+        parent::setUp();
 
-		$this->instance = $this->getMockForAbstractClass(AbstractView::class);
-	}
+        $this->instance = $this->getMockForAbstractClass(AbstractView::class);
+    }
 
-	public function testViewDataCanBeManaged()
-	{
-		$this->assertSame($this->instance, $this->instance->addData('test', 'value'), 'addData supports chaining');
+    public function testViewDataCanBeManaged()
+    {
+        $this->assertSame($this->instance, $this->instance->addData('test', 'value'), 'addData supports chaining');
 
-		$this->assertSame(['test' => 'value'], $this->instance->getData());
+        $this->assertSame(['test' => 'value'], $this->instance->getData());
 
-		$this->assertSame($this->instance, $this->instance->clearData(), 'clearData supports chaining');
+        $this->assertSame($this->instance, $this->instance->clearData(), 'clearData supports chaining');
 
-		$this->assertEmpty($this->instance->getData());
+        $this->assertEmpty($this->instance->getData());
 
-		$this->instance->addData('test', 'value');
+        $this->instance->addData('test', 'value');
 
-		$this->assertSame($this->instance, $this->instance->removeData('test'), 'removeData supports chaining');
+        $this->assertSame($this->instance, $this->instance->removeData('test'), 'removeData supports chaining');
 
-		$this->assertEmpty($this->instance->getData());
+        $this->assertEmpty($this->instance->getData());
 
-		$this->assertSame($this->instance, $this->instance->setData(['test' => 'value']), 'setData supports chaining');
-		$this->assertSame(['test' => 'value'], $this->instance->getData());
+        $this->assertSame($this->instance, $this->instance->setData(['test' => 'value']), 'setData supports chaining');
+        $this->assertSame(['test' => 'value'], $this->instance->getData());
 
-		// Add some extra data
-		$this->instance->setData(['joomla' => 'rocks']);
+        // Add some extra data
+        $this->instance->setData(['joomla' => 'rocks']);
 
-		$this->assertSame(
-			[
-				'test'   => 'value',
-				'joomla' => 'rocks',
-			],
-			$this->instance->getData(),
-			'Data is merged when calling setData()'
-		);
-	}
+        $this->assertSame(
+            [
+                'test'   => 'value',
+                'joomla' => 'rocks',
+            ],
+            $this->instance->getData(),
+            'Data is merged when calling setData()'
+        );
+    }
 }

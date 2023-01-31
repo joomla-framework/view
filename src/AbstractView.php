@@ -15,86 +15,86 @@ namespace Joomla\View;
  */
 abstract class AbstractView implements ViewInterface
 {
-	/**
-	 * The data array to pass to the renderer
-	 *
-	 * @var    array
-	 * @since  2.0.0
-	 */
-	private $data = [];
+    /**
+     * The data array to pass to the renderer
+     *
+     * @var    array
+     * @since  2.0.0
+     */
+    private $data = [];
 
-	/**
-	 * Adds an object to the data array
-	 *
-	 * @param   string  $key    The array key
-	 * @param   mixed   $value  The data value to add
-	 *
-	 * @return  $this
-	 *
-	 * @since   2.0.0
-	 */
-	public function addData(string $key, $value)
-	{
-		$this->data[$key] = $value;
+    /**
+     * Adds an object to the data array
+     *
+     * @param   string  $key    The array key
+     * @param   mixed   $value  The data value to add
+     *
+     * @return  $this
+     *
+     * @since   2.0.0
+     */
+    public function addData(string $key, $value)
+    {
+        $this->data[$key] = $value;
 
-		return $this;
-	}
+        return $this;
+    }
 
-	/**
-	 * Resets the internal data array
-	 *
-	 * @return  $this
-	 *
-	 * @since   2.0.0
-	 */
-	public function clearData()
-	{
-		$this->data = [];
+    /**
+     * Resets the internal data array
+     *
+     * @return  $this
+     *
+     * @since   2.0.0
+     */
+    public function clearData()
+    {
+        $this->data = [];
 
-		return $this;
-	}
+        return $this;
+    }
 
-	/**
-	 * Retrieves the data array
-	 *
-	 * @return  array
-	 *
-	 * @since   2.0.0
-	 */
-	public function getData(): array
-	{
-		return $this->data;
-	}
+    /**
+     * Retrieves the data array
+     *
+     * @return  array
+     *
+     * @since   2.0.0
+     */
+    public function getData(): array
+    {
+        return $this->data;
+    }
 
-	/**
-	 * Removes an object to the data array
-	 *
-	 * @param   string  $key  The array key to remove
-	 *
-	 * @return  $this
-	 *
-	 * @since   2.0.0
-	 */
-	public function removeData(string $key)
-	{
-		unset($this->data[$key]);
+    /**
+     * Removes an object to the data array
+     *
+     * @param   string  $key  The array key to remove
+     *
+     * @return  $this
+     *
+     * @since   2.0.0
+     */
+    public function removeData(string $key)
+    {
+        unset($this->data[$key]);
 
-		return $this;
-	}
+        return $this;
+    }
 
-	/**
-	 * Sets additional data to the data array
-	 *
-	 * @param   array  $data  Data to merge into the existing data array
-	 *
-	 * @return  $this
-	 *
-	 * @since   2.0.0
-	 */
-	public function setData(array $data)
-	{
-		$this->data = array_merge($this->data, $data);
+    /**
+     * Sets additional data to the data array
+     *
+     * @param   array  $data  Data to merge into the existing data array
+     *
+     * @return  $this
+     *
+     * @since   2.0.0
+     */
+    public function setData(array $data)
+    {
+        $this->data = array_merge($this->data, $data);
 
-		return $this;
-	}
+        return $this;
+    }
 }

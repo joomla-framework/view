@@ -15,15 +15,15 @@ namespace Joomla\View;
  */
 class JsonView extends AbstractView
 {
-	/**
-	 * Method to render the view.
-	 *
-	 * @return  string  The rendered view.
-	 *
-	 * @since   2.0.0
-	 */
-	public function render()
-	{
-		return json_encode($this->getData());
-	}
+    /**
+     * Method to render the view.
+     *
+     * @return  string  The rendered view.
+     *
+     * @since   2.0.0
+     */
+    public function render()
+    {
+        return json_encode($this->getData());
+    }
 }
