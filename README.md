@@ -9,12 +9,12 @@ The View package provides an abstraction layer for rendering content in MVC orie
 
 ## Requirements
 
-* PHP 8.1 or later
+* PHP 8.3 or later
 
 ## Installation
 
 To install the package, you can simply run the following from the command line:
 
 ```sh
-composer require joomla/view "~3.0"
+composer require joomla/view "~4.0"
 ```
