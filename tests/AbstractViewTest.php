@@ -18,7 +18,7 @@ class AbstractViewTest extends TestCase
     /**
      * Test object
      *
-     * @var  ViewTest|AbstractView
+     * @var  TestView|AbstractView
      */
     private $instance;
 
@@ -32,7 +32,7 @@ class AbstractViewTest extends TestCase
     {
         parent::setUp();
 
-        $this->instance = new ViewTest();
+        $this->instance = new TestView();
     }
 
     public function testViewDataCanBeManaged()
@@ -70,14 +70,14 @@ class AbstractViewTest extends TestCase
 
 
 /**
- * Class ViewTest
+ * Class TestView
  *
  * To have an instance of the class to test
  *
  * @package  Joomla\View\Tests
  * @since    1.0
  */
-class ViewTest extends AbstractView {
+class TestView extends AbstractView {
     public function render()
     {
         // TODO: Implement render() method.
