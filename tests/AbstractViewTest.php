@@ -8,7 +8,6 @@
 namespace Joomla\View\Tests;
 
 use Joomla\View\AbstractView;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -19,7 +18,7 @@ class AbstractViewTest extends TestCase
     /**
      * Test object
      *
-     * @var  MockObject|AbstractView
+     * @var  ViewTest|AbstractView
      */
     private $instance;
 
@@ -33,7 +32,7 @@ class AbstractViewTest extends TestCase
     {
         parent::setUp();
 
-        $this->instance = $this->getMockForAbstractClass(AbstractView::class);
+        $this->instance = new ViewTest();
     }
 
     public function testViewDataCanBeManaged()
@@ -66,5 +65,21 @@ class AbstractViewTest extends TestCase
             $this->instance->getData(),
             'Data is merged when calling setData()'
         );
+    }
+}
+
+
+/**
+ * Class ViewTest
+ *
+ * To have an instance of the class to test
+ *
+ * @package  Joomla\View\Tests
+ * @since    1.0
+ */
+class ViewTest extends AbstractView {
+    public function render()
+    {
+        // TODO: Implement render() method.
     }
 }
