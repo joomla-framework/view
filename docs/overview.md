@@ -125,3 +125,22 @@ $view->setData(['foo' => 'bar']);
 
 $rendered = $view->render();
 ```
+
+If the data cannot be encoded (for example because a string is not valid UTF-8, or a value is `INF` or `NAN`), `render()` throws a `RuntimeException` whose previous exception is the `JsonException` raised by `json_encode()`.
+
+#### Changing the encoding flags
+
+By default the data is encoded without any flags. Flags for `json_encode()` can be passed to the constructor or set with `Joomla\View\JsonView::setFlags()`, and read with `Joomla\View\JsonView::getFlags()`. For example, use the `JSON_HEX_*` flags when the output is embedded in a `<script>` block, or `JSON_PRETTY_PRINT` for readable output.
+
+```php
+use Joomla\View\JsonView;
+
+$view = new JsonView(JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT);
+$view->setData(['foo' => '</script>']);
+
+$rendered = $view->render(); // {"foo":"\u003C\/script\u003E"}
+
+$view->setFlags(JSON_PRETTY_PRINT);
+```
+
+`JSON_THROW_ON_ERROR` is always added, so it does not need to be passed.
