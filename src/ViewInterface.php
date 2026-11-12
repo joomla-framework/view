@@ -24,5 +24,5 @@ interface ViewInterface
      * @since   1.0
      * @throws  \RuntimeException
      */
-    public function render();
+    public function render(): string;
 }

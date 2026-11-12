@@ -78,8 +78,8 @@ class AbstractViewTest extends TestCase
  * @since    1.0
  */
 class TestView extends AbstractView {
-    public function render()
+    public function render(): string
     {
-        // TODO: Implement render() method.
+        return '';
     }
 }

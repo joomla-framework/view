@@ -24,7 +24,7 @@ class HtmlView extends AbstractView
      * @var    string
      * @since  2.0.0
      */
-    protected $layout = 'default';
+    protected string $layout = 'default';
 
     /**
      * The renderer object
@@ -32,7 +32,7 @@ class HtmlView extends AbstractView
      * @var    RendererInterface
      * @since  2.0.0
      */
-    private $renderer;
+    private RendererInterface $renderer;
 
     /**
      * Method to instantiate the view.
@@ -53,7 +53,7 @@ class HtmlView extends AbstractView
      *
      * @since   2.0.0
      */
-    public function __toString()
+    public function __toString(): string
     {
         try {
             return $this->render();
@@ -93,7 +93,7 @@ class HtmlView extends AbstractView
      *
      * @since   2.0.0
      */
-    public function render()
+    public function render(): string
     {
         return $this->getRenderer()->render($this->getLayout(), $this->getData());
     }
@@ -107,7 +107,7 @@ class HtmlView extends AbstractView
      *
      * @since   2.0.0
      */
-    public function setLayout(string $layout)
+    public function setLayout(string $layout): static
     {
         $this->layout = $layout;
 
@@ -123,7 +123,7 @@ class HtmlView extends AbstractView
      *
      * @since   2.0.0
      */
-    public function setRenderer(RendererInterface $renderer)
+    public function setRenderer(RendererInterface $renderer): static
     {
         $this->renderer = $renderer;
 

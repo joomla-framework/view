@@ -22,7 +22,7 @@ abstract class AbstractView implements ViewInterface
      * @var    array
      * @since  2.0.0
      */
-    private $data = [];
+    private array $data = [];
 
     /**
      * Adds an object to the data array
@@ -34,7 +34,7 @@ abstract class AbstractView implements ViewInterface
      *
      * @since   2.0.0
      */
-    public function addData(string $key, $value)
+    public function addData(string $key, mixed $value): static
     {
         $this->data[$key] = $value;
 
@@ -48,7 +48,7 @@ abstract class AbstractView implements ViewInterface
      *
      * @since   2.0.0
      */
-    public function clearData()
+    public function clearData(): static
     {
         $this->data = [];
 
@@ -76,7 +76,7 @@ abstract class AbstractView implements ViewInterface
      *
      * @since   2.0.0
      */
-    public function removeData(string $key)
+    public function removeData(string $key): static
     {
         unset($this->data[$key]);
 
@@ -92,7 +92,7 @@ abstract class AbstractView implements ViewInterface
      *
      * @since   2.0.0
      */
-    public function setData(array $data)
+    public function setData(array $data): static
     {
         $this->data = array_merge($this->data, $data);
 

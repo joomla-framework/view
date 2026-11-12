@@ -23,7 +23,7 @@ class JsonView extends AbstractView
      *
      * @since   2.0.0
      */
-    public function render()
+    public function render(): string
     {
         return json_encode($this->getData());
     }
