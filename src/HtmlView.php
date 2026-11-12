@@ -49,6 +49,9 @@ class HtmlView extends AbstractView
     /**
      * Magic toString method that is a proxy for the render method.
      *
+     * If rendering fails, an empty string is returned and the failure is reported as an E_USER_WARNING. Call render()
+     * directly to handle the exception yourself.
+     *
      * @return  string
      *
      * @since   2.0.0
@@ -58,7 +61,12 @@ class HtmlView extends AbstractView
         try {
             return $this->render();
         } catch (\Exception $e) {
-            return $e->getMessage();
+            trigger_error(
+                sprintf('Rendering the view failed: %s', $e->getMessage()),
+                E_USER_WARNING
+            );
+
+            return '';
         }
     }
 

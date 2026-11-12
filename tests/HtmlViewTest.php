@@ -57,6 +57,34 @@ class HtmlViewTest extends TestCase
         $this->assertSame('Rendered View', (string) $this->object);
     }
 
+    public function testMagicToStringMethodDoesNotOutputTheExceptionMessageWhenRenderingFails()
+    {
+        $this->mockRenderer->expects($this->once())
+            ->method('render')
+            ->willThrowException(new \RuntimeException('Template <script>x</script> not found in /secret/path'));
+
+        $errors = [];
+
+        set_error_handler(
+            static function (int $errno, string $errstr) use (&$errors): bool {
+                $errors[] = [$errno, $errstr];
+
+                return true;
+            }
+        );
+
+        try {
+            $rendered = (string) $this->object;
+        } finally {
+            restore_error_handler();
+        }
+
+        $this->assertSame('', $rendered, 'A failed render must not leak the exception message into the output');
+        $this->assertCount(1, $errors, 'A failed render must be reported as a PHP warning');
+        $this->assertSame(E_USER_WARNING, $errors[0][0]);
+        $this->assertStringContainsString('not found in /secret/path', $errors[0][1]);
+    }
+
     public function testEnsureRenderReturnsTheDataReceivedFromTheRenderer()
     {
         $this->assertEmpty($this->object->render());
