@@ -86,7 +86,7 @@ abstract class AbstractView implements ViewInterface
     /**
      * Sets additional data to the data array
      *
-     * @param   array  $data  Data to merge into the existing data array
+     * @param   array  $data  Data to merge into the existing data array, values overwrite existing keys
      *
      * @return  $this
      *
@@ -94,7 +94,7 @@ abstract class AbstractView implements ViewInterface
      */
     public function setData(array $data)
     {
-        $this->data = array_merge($this->data, $data);
+        $this->data = array_replace($this->data, $data);
 
         return $this;
     }

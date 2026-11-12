@@ -66,6 +66,23 @@ class AbstractViewTest extends TestCase
             'Data is merged when calling setData()'
         );
     }
+
+    public function testSetDataOverwritesExistingKeys()
+    {
+        $this->instance->setData(['test' => 'value', 0 => 'a', 5 => 'b']);
+        $this->instance->setData(['test' => 'changed', 0 => 'c', 7 => 'd']);
+
+        $this->assertSame(
+            [
+                'test' => 'changed',
+                0      => 'c',
+                5      => 'b',
+                7      => 'd',
+            ],
+            $this->instance->getData(),
+            'setData() overwrites existing string and numeric keys and keeps new numeric keys'
+        );
+    }
 }
 
 
