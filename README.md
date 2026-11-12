@@ -1,4 +1,4 @@
-# The View Package [![Build Status](https://github.com/joomla-framework/view/actions/workflows/ci.yml/badge.svg?branch=3.x-dev)](https://github.com/joomla-framework/view)
+# The View Package [![Build Status](https://github.com/joomla-framework/view/actions/workflows/ci.yml/badge.svg?branch=4.x-dev)](https://github.com/joomla-framework/view)
 
 [![Latest Stable Version](https://poser.pugx.org/joomla/view/v/stable)](https://packagist.org/packages/joomla/view)
 [![Total Downloads](https://poser.pugx.org/joomla/view/downloads)](https://packagist.org/packages/joomla/view)

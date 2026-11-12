@@ -16,7 +16,7 @@
         "phpstan/phpstan-deprecation-rules": "^2.0.3"
     },
     "suggest": {
-        "joomla/renderer": "Required to use Joomla\\View\\BaseHtmlView"
+        "joomla/renderer": "Required to use Joomla\\View\\HtmlView"
     },
     "autoload": {
         "psr-4": {
