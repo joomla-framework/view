@@ -57,7 +57,7 @@ $view->removeData('foo');
 
 #### Merging data
 
-The `Joomla\View\AbstractView::setData()` method allows merging an array of data to the view's data store, and will overwrite a value if the key already exists.
+The `Joomla\View\AbstractView::setData()` method allows merging an array of data to the view's data store, and will overwrite a value if the key already exists. This applies to numeric keys as well: they are overwritten, not renumbered and appended.
 
 ```php
 use Joomla\View\JsonView;
