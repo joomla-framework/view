@@ -10,5 +10,5 @@ The `render` method is used to render a view.
 /**
  * @return  string
  */
-public function render();
+public function render(): string;
 ```
